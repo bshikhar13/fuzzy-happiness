@@ -17,14 +17,14 @@ cur = db.cursor()
 
 for i in range(0,len(genuine_data)-1):
 	#print "YO"
-	query = "INSERT INTO cdr_voice_genuine VALUES (" + str(genuine_data[i][0]) + " ," + str(genuine_data[i][1]) + " ," + str(genuine_data[i][2]) + " ," + str(genuine_data[i][3]) + " )"
-	cur.execute(query)
-	db.commit()
+
+	cur.execute("INSERT INTO cdr_voice_genuine VALUES (%s,%s,%s,%s,%s)",(genuine_data[i][0],genuine_data[i][1],genuine_data[i][2],genuine_data[i][3],genuine_data[i][4]))
+	#db.commit()
 
 for i in range(0,len(fraud_data)-1):
 	#print "YO"
-	query = "INSERT INTO cdr_voice_fraud VALUES (" + str(fraud_data[i][0]) + " ," + str(fraud_data[i][1]) + " ," + str(fraud_data[i][2]) + " ," + str(fraud_data[i][3]) + " )"
-	cur.execute(query)
-	db.commit()
+	cur.execute("INSERT INTO cdr_voice_fraud VALUES (%s,%s,%s,%s,%s)",(fraud_data[i][0],fraud_data[i][1],fraud_data[i][2],fraud_data[i][3],fraud_data[i][4]))
+	
+	#db.commit()
 
 db.close()
