@@ -103,3 +103,9 @@ for row_fraud in cur_fraud.fetchall():
 print X[249607]
 print X[249608]
 print len(X)
+
+from random import shuffle
+shuffle(X)
+
+print X[249]
+print X[249608]
