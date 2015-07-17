@@ -107,5 +107,50 @@ print len(X)
 from random import shuffle
 shuffle(X)
 
-print X[249]
-print X[249608]
+print len(X)
+
+train = []
+test = []
+num_train = 200000
+
+for i in range(0,num_train):
+	train.append(X[i])
+
+
+for i in range(num_train,len(X)-num_train):
+	test.append(X[i])
+
+
+##################################################################################Neural Network##########################################################
+
+from pybrain.structure import FeedForwardNetwork
+from pybrain.structure import LinearLayer, SigmoidLayer
+from pybrain.structure import FullConnection
+
+
+n = FeedForwardNetwork()
+
+inLayer = LinearLayer(3)
+hiddenLayer = SigmoidLayer(4)
+outLayer = LinearLayer(1)
+
+n.addInputModule(inLayer)
+n.addModule(hiddenLayer)
+n.addOutputModule(outLayer)
+
+in_to_hidden = FullConnection(inLayer, hiddenLayer)
+hidden_to_out = FullConnection(hiddenLayer, outLayer)
+
+n.addConnection(in_to_hidden)
+
+n.addConnection(hidden_to_out)
+
+n.sortModules()
+
+print n
+n.activate([39, 97, 39])
+
+print in_to_hidden.params
+print hidden_to_out.params
+
+print n.params

@@ -1,6 +1,5 @@
 # 0   is fraud and 1 is genuine
 
-
 from genuine_data_generate import *
 from fraud_data_generate import *
 genuine_data = genuine_data_generate()
